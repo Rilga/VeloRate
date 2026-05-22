@@ -1,18 +1,10 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "public"
-            }
-        },
-        {
-            "src": "api/index.php",
-            "use": "vercel-php@0.7.2"
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.2"
         }
-    ],
+    },
     "routes": [
         {
             "handle": "filesystem"
@@ -22,7 +14,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "public": true, 
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",

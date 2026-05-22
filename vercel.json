@@ -2,16 +2,11 @@
     "version": 2,
     "framework": null,
 
-    "builds": [
-        {
-            "src": "api/index.php",
-            "use": "@vercel/php"
-        },
-        {
-            "src": "public/**",
-            "use": "@vercel/static"
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.2"
         }
-    ],
+    },
 
     "routes": [
         {
@@ -19,9 +14,23 @@
             "dest": "/public/build/$1"
         },
         {
-            "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp))",
+            "src": "/assets/(.*)",
+            "dest": "/public/assets/$1"
+        },
+        {
+            "src": "/images/(.*)",
+            "dest": "/public/images/$1"
+        },
+        {
+            "src": "/favicon.ico",
+            "dest": "/public/favicon.ico"
+        },
+
+        {
+            "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf))",
             "dest": "/public/$1"
         },
+
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
@@ -31,6 +40,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+
         "APP_URL": "https://velo-rate.vercel.app",
         "ASSET_URL": "https://velo-rate.vercel.app",
 

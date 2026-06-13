@@ -14,27 +14,49 @@
         @else
             <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
             <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-            <style>
-                :root {
-                    --brand-navy: #1e293b; 
-                    --brand-navy-light: #334155;
-                }
-                [x-cloak] { display: none !important; }
-            </style>
         @endif
+
+        {{-- TARUH DI SINI (Di luar @if) Agar selalu dieksekusi browser secara instan --}}
+        <style>
+            [x-cloak] { display: none !important; }
+
+            /* CSS Utility Mutlak untuk memutus dependensi compiler framework */
+            .custom-bg-iai-red { 
+                background-color: #D1232A !important; 
+            }
+            .custom-bg-iai-red:hover { 
+                background-color: #b01b21 !important; 
+            }
+            .custom-text-iai-red { 
+                color: #D1232A !important; 
+            }
+            .custom-bg-iai-red-light { 
+                background-color: rgba(209, 35, 42, 0.1) !important; 
+            }
+            .custom-bg-iai-red-icon { 
+                background-color: rgba(209, 35, 42, 0.07) !important; 
+            }
+            .custom-bg-iai-dark { 
+                background-color: #0f172a !important; 
+            }
+
+            .custom-bg-iai-maroon { 
+                background-color: #5c0f13 !important; /* Warna Merah IAI yang digelapkan secara elegan */
+            }
+        </style>
     </head>
-    <body class="bg-[#F8FAFC] text-[#1e293b] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col font-sans" x-data="{ open: false }">
+    <body class="bg-[#F8FAFC] text-[#0f172a] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col font-sans" x-data="{ open: false }">
         
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 relative">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-between lg:justify-end">
                     {{-- Navigasi Mobile Brand Title --}}
-                    <div class="lg:hidden font-bold text-[#1e293b] tracking-tight">
+                    <div class="lg:hidden font-bold text-[#0f172a] tracking-tight">
                         IAI Performance System
                     </div>
 
                     <div class="lg:hidden">
-                        <button @click="open = !open" class="p-2 text-[#1e293b] focus:outline-none">
+                        <button @click="open = !open" class="p-2 text-[#0f172a] focus:outline-none">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                                 <path x-show="open" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -44,11 +66,12 @@
 
                     <div class="hidden lg:flex items-center gap-4">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="inline-block px-5 py-1.5 text-[#1e293b] border-[#1e293b]/20 hover:border-[#1e293b] border rounded-md text-sm font-medium transition-all">
+                            <a href="{{ url('/dashboard') }}" class="inline-block px-5 py-1.5 text-[#0f172a] border border-slate-200 hover:border-[#D1232A] hover:text-[#D1232A] rounded-md text-sm font-medium transition-all">
                                 Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="inline-block px-5 py-1.5 bg-[#1e293b] rounded-md text text-white font-medium transition-all">
+                            {{-- Tombol Login Atas --}}
+                            <a href="{{ route('login') }}" class="custom-bg-iai-red inline-block px-5 py-1.5 rounded-md text-white font-medium transition-all shadow-sm">
                                 Log in
                             </a>
                         @endauth
@@ -63,9 +86,9 @@
                      class="absolute top-full left-0 right-0 mt-2 p-4 bg-white shadow-xl rounded-lg border border-slate-100 lg:hidden z-50">
                     <div class="flex flex-col gap-3">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="block px-4 py-2 text-center text-[#1e293b] font-medium border border-slate-200 rounded-md">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="block px-4 py-2 text-center text-[#0f172a] font-medium border border-slate-200 rounded-md">Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="block px-4 py-2 text-center bg-[#1e293b] text-white rounded-md font-medium">Log in</a>
+                            <a href="{{ route('login') }}" class="custom-bg-iai-red block px-4 py-2 text-center text-white rounded-md font-medium">Log in</a>
                         @endauth
                     </div>
                 </div>
@@ -73,21 +96,24 @@
         </header>
 
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row shadow-2xl rounded-xl overflow-hidden border border-[#1e293b]/10 bg-white">
-                <div class="flex-1 p-8 pb-12 lg:p-16 bg-white text-[#1e293b]">
+            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row shadow-2xl rounded-xl overflow-hidden border border-slate-200 bg-white">
+                
+                {{-- SISI KIRI: PANEL INFORMASI UTAMA --}}
+                <div class="flex-1 p-8 pb-12 lg:p-16 bg-white text-[#0f172a]">
                     <div class="mb-8">
-                        {{-- Tag Name Atas --}}
-                        <span class="px-3 py-1 rounded-full bg-[#1e293b]/5 text-[#1e293b] font-semibold text-[10px] uppercase tracking-[0.1em]">Ikatan Akuntan Indonesia</span>
+                        {{-- Tag Badge Atas --}}
+                        <span class="custom-text-iai-red custom-bg-iai-red-light px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-[0.1em]">Ikatan Akuntan Indonesia</span>
                     </div>
                     
-                    <h1 class="mb-3 text-3xl font-bold tracking-tight">Employee <span class="text-[#1e293b]/70 font-light">Performance</span></h1>
+                    <h1 class="mb-3 text-3xl font-bold tracking-tight">Employee <span class="custom-text-iai-red font-light">Performance</span></h1>
                     <p class="mb-8 text-slate-500 leading-relaxed text-sm lg:text-base">
                         Optimalkan produktivitas tim Ikatan Akuntan Indonesia dengan sistem evaluasi berbasis kriteria yang transparan, akurat, dan real-time.
                     </p>
 
                     <div class="grid grid-cols-1 gap-6 mb-10">
                         <div class="flex items-start gap-4">
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#1e293b]/5 text-[#1e293b]">
+                            {{-- Wrapper Icon Aksen Merah Lembut --}}
+                            <div class="custom-text-iai-red custom-bg-iai-red-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
                                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 10.122V21m0-10.878a7.44 7.44 0 00-7.5 7.5M12 10.122a7.44 7.44 0 017.5 7.5" />
                                 </svg>
@@ -99,7 +125,7 @@
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#1e293b]/5 text-[#1e293b]">
+                            <div class="custom-text-iai-red custom-bg-iai-red-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
                                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
@@ -113,28 +139,31 @@
                     </div>
 
                     <div class="flex flex-wrap gap-4">
-                        <a href="{{ route('login') }}" class="w-full lg:w-auto px-8 py-3 bg-[#1e293b] text-white rounded-lg font-semibold hover:bg-[#334155] transition-all shadow-lg shadow-[#1e293b]/20 text-center">
+                        {{-- Tombol Utama Solid Merah IAI --}}
+                        <a href="{{ route('login') }}" class="custom-bg-iai-red w-full lg:w-auto px-8 py-3 text-white rounded-lg font-semibold transition-all text-center shadow-md">
                             Access the System
                         </a>
                     </div>
                 </div>
 
-                {{-- Sisi Kanan Visual Hero Panel --}}
-                <div class="bg-[#1e293b] relative w-full lg:w-[380px] shrink-0 flex items-center justify-center p-12 overflow-hidden min-h-[240px] lg:min-h-full">
-                    <div class="absolute w-64 h-64 border border-white/10 rounded-full -top-20 -right-20"></div>
+                {{-- SISI KANAN: PANEL HERO LOGO (Warna Gelap #0f172a) --}}
+                <div class="custom-bg-iai-maroon relative w-full lg:w-[380px] shrink-0 flex items-center justify-center p-12 overflow-hidden min-h-[240px] lg:min-h-full">
+                    <div class="absolute w-64 h-64 border border-white/5 rounded-full -top-20 -right-20"></div>
                     <div class="absolute w-40 h-40 border border-white/5 rounded-full bottom-10 -left-10"></div>
                     
                     <div class="relative z-10 text-center">
-                        <div class="mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                        <div class="mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
                             <img src="{{ asset('images/logo.png') }}" alt="IAI Logo" class="w-40 h-40 object-contain">
                         </div>
                         <h2 class="text-white font-medium tracking-wide">IAI Evaluation Portal</h2>
                         <div class="mt-4 flex gap-1 justify-center">
-                            <div class="h-1 w-8 bg-white/40 rounded-full"></div>
+                            {{-- Batang Indikator Kecil Berwarna Merah IAI --}}
+                            <div class="custom-bg-iai-red h-1 w-8 rounded-full"></div>
                             <div class="h-1 w-4 bg-white/20 rounded-full"></div>
                         </div>
                     </div>
                 </div>
+
             </main>
         </div>
 

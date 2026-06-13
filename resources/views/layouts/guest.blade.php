@@ -19,7 +19,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/"> 
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Aplikasi" class="w-24 h-24 object-contain">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Aplikasi" class="w-40 h-40 object-contain">
                 </a>
             </div>
 

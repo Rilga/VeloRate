@@ -5,10 +5,10 @@
         <div>
             <div class="flex items-center gap-3 px-6 h-24">
                 <div class="flex items-center justify-center overflow-hidden rounded-lg">
-                    <img src="{{ asset('images/logo2.png') }}" alt="PerformPT Logo" class="w-10 h-10 object-contain">
+                    <img src="{{ asset('images/logo.png') }}" alt="PerformPT Logo" class="w-16 h-16 object-contain">
                 </div>
                 <div>
-                    <h1 class="text-white font-bold text-lg leading-none tracking-tight">PerformPT</h1>
+                    <h1 class="text-white font-bold text-lg leading-none tracking-tight">IAI JAKARTA</h1>
                     <p class="text-gray-400 text-[10px] mt-1 font-medium uppercase tracking-wider">Employee Portal</p>
                 </div>
             </div>
@@ -60,8 +60,8 @@
 
     <div class="lg:hidden fixed top-0 left-0 w-full bg-[#1e293b] border-b border-white/10 z-[60] h-16 flex items-center justify-between px-4">
         <div class="flex items-center gap-3">
-            <img src="{{ asset('images/logo2.png') }}" alt="PerformPT Logo" class="w-8 h-8 object-contain">
-            <span class="font-bold text-white tracking-tight">PerformPT</span>
+            <img src="{{ asset('images/logo.png') }}" alt="PerformPT Logo" class="w-12 h-12 object-contain">
+            <span class="font-bold text-white tracking-tight">IAI JAKARTA</span>
         </div>
         
         <button @click="open = !open" class="p-2 focus:outline-none" style="color: white !important;">

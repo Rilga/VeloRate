@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Employee Performance System</title>
+        <title>Ikatan Akuntan Indonesia - Employee Performance System</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -28,8 +28,9 @@
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 relative">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-between lg:justify-end">
+                    {{-- Navigasi Mobile Brand Title --}}
                     <div class="lg:hidden font-bold text-[#1e293b] tracking-tight">
-                        EPS Dashboard
+                        IAI Performance System
                     </div>
 
                     <div class="lg:hidden">
@@ -75,12 +76,13 @@
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row shadow-2xl rounded-xl overflow-hidden border border-[#1e293b]/10 bg-white">
                 <div class="flex-1 p-8 pb-12 lg:p-16 bg-white text-[#1e293b]">
                     <div class="mb-8">
-                        <span class="px-3 py-1 rounded-full bg-[#1e293b]/5 text-[#1e293b] font-semibold text-[10px] uppercase tracking-[0.1em]">Management Suite</span>
+                        {{-- Tag Name Atas --}}
+                        <span class="px-3 py-1 rounded-full bg-[#1e293b]/5 text-[#1e293b] font-semibold text-[10px] uppercase tracking-[0.1em]">Ikatan Akuntan Indonesia</span>
                     </div>
                     
                     <h1 class="mb-3 text-3xl font-bold tracking-tight">Employee <span class="text-[#1e293b]/70 font-light">Performance</span></h1>
                     <p class="mb-8 text-slate-500 leading-relaxed text-sm lg:text-base">
-                        Optimize your team's productivity with a criteria-based evaluation system that is transparent, accurate, and real-time.
+                        Optimalkan produktivitas tim Ikatan Akuntan Indonesia dengan sistem evaluasi berbasis kriteria yang transparan, akurat, dan real-time.
                     </p>
 
                     <div class="grid grid-cols-1 gap-6 mb-10">
@@ -92,7 +94,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-sm">Centralized Evaluation Workflow</h3>
-                                <p class="text-xs text-slate-400 mt-1">Seamless synchronization of evaluation criteria, manager assessments, and employee reports.</p>
+                                <p class="text-xs text-slate-400 mt-1">Sinkronisasi tanpa hambatan untuk kriteria evaluasi, penilaian manajer, dan laporan kinerja karyawan.</p>
                             </div>
                         </div>
 
@@ -105,7 +107,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-sm">Performance Analytics</h3>
-                                <p class="text-xs text-slate-400 mt-1">Interactive KPI tracking dashboards with historical and periodic performance trends.</p>
+                                <p class="text-xs text-slate-400 mt-1">Dashboard pelacakan KPI interaktif dengan metrik tren performa berkala dan riwayat penilaian.</p>
                             </div>
                         </div>
                     </div>
@@ -117,17 +119,16 @@
                     </div>
                 </div>
 
+                {{-- Sisi Kanan Visual Hero Panel --}}
                 <div class="bg-[#1e293b] relative w-full lg:w-[380px] shrink-0 flex items-center justify-center p-12 overflow-hidden min-h-[240px] lg:min-h-full">
                     <div class="absolute w-64 h-64 border border-white/10 rounded-full -top-20 -right-20"></div>
                     <div class="absolute w-40 h-40 border border-white/5 rounded-full bottom-10 -left-10"></div>
                     
                     <div class="relative z-10 text-center">
-                        <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                            <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
+                        <div class="mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                            <img src="{{ asset('images/logo.png') }}" alt="IAI Logo" class="w-40 h-40 object-contain">
                         </div>
-                        <h2 class="text-white font-medium tracking-wide">Evaluation Portal</h2>
+                        <h2 class="text-white font-medium tracking-wide">IAI Evaluation Portal</h2>
                         <div class="mt-4 flex gap-1 justify-center">
                             <div class="h-1 w-8 bg-white/40 rounded-full"></div>
                             <div class="h-1 w-4 bg-white/20 rounded-full"></div>
@@ -137,8 +138,9 @@
             </main>
         </div>
 
+        {{-- Footer Copyright --}}
         <footer class="py-8 text-center text-slate-400 text-[10px] lg:text-[11px] font-medium tracking-widest uppercase mt-auto">
-            &copy; {{ date('Y') }} PT. XYZ &bull; PERFORMANCE DASHBOARD
+            &copy; {{ date('Y') }} Ikatan Akuntan Indonesia &bull; PERFORMANCE DASHBOARD
         </footer>
     </body>
 </html>

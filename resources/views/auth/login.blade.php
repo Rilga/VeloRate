@@ -9,7 +9,8 @@
 
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('login') }}" class="space-y-5">
+        {{-- Menginisialisasi state Alpine.js 'showPassword' pada form --}}
+        <form method="POST" action="{{ route('login') }}" class="space-y-5" x-data="{ showPassword: false }">
             @csrf
 
             <div class="space-y-1">
@@ -35,13 +36,27 @@
                     @endif
                 </div>
 
-                <x-text-input id="password" 
-                    class="block w-full border-slate-200 bg-slate-50 focus:border-[#1e293b] focus:ring-[#1e293b] rounded-xl shadow-sm text-sm p-3.5 transition-all"
-                    type="password"
-                    name="password"
-                    required 
-                    autocomplete="current-password" 
-                    placeholder="••••••••" />
+                {{-- Menggunakan Flexbox Container dengan background menyatu --}}
+                <div class="flex items-center w-full border border-slate-200 bg-slate-50 rounded-xl shadow-sm focus-within:border-[#1e293b] focus-within:ring-1 focus-within:ring-[#1e293b] transition-all p-1">
+                    
+                    {{-- Perbaikan: Mengubah ::type menjadi :type agar dieksekusi oleh Alpine.js --}}
+                    <input id="password" 
+                        class="w-full bg-transparent border-0 focus:ring-0 text-sm p-2.5 outline-none text-slate-800"
+                        :type="showPassword ? 'text' : 'password'"
+                        name="password"
+                        required 
+                        autocomplete="current-password" 
+                        placeholder="••••••••" 
+                        style="border: none !important; box-shadow: none !important; outline: none !important;" />
+
+                    {{-- Tombol Toggle Mata --}}
+                    <button type="button" 
+                            @click="showPassword = !showPassword" 
+                            class="px-3 text-slate-400 hover:text-[#1e293b] focus:outline-none transition-colors flex-shrink-0"
+                            style="background: none; border: none; outline: none;">
+                        <i class="fas" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" style="font-size: 14px;"></i>
+                    </button>
+                </div>
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2 text-xs" />
             </div>
@@ -59,14 +74,6 @@
                     {{ __('Log in') }}
                 </button>
             </div>
-            
-            {{-- Registration Link --}}
-            @if (Route::has('register'))
-                <p class="text-center text-xs text-slate-500 mt-4">
-                    Don't have an account yet? 
-                    <a href="{{ route('register') }}" class="font-bold text-[#1e293b] hover:underline ml-1">Register now</a>
-                </p>
-            @endif
         </form>
         
     </div>

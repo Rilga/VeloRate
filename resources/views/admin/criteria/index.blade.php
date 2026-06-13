@@ -44,7 +44,9 @@
                                     <tr class="hover:bg-slate-50/50 transition-colors group">
                                         <td class="px-6 py-5">
                                             <p class="text-sm font-bold text-slate-900">{{ $c->name }}</p>
-                                            <p class="text-[10px] text-slate-400 font-medium">Created: {{ $c->created_at->format('M d, Y') }}</p>
+                                            {{-- Penyesuaian: Menampilkan deskripsi kriteria tepat di bawah nama --}}
+                                            <p class="text-xs text-slate-500 mt-0.5 line-clamp-2 max-w-md">{{ $c->description ?? 'No description provided.' }}</p>
+                                            <p class="text-[9px] text-slate-400 font-medium mt-1">Created: {{ $c->created_at->format('M d, Y') }}</p>
                                         </td>
                                         <td class="px-6 py-5 text-center">
                                             <div class="inline-flex items-center justify-center bg-emerald-50 text-[#10b981] h-10 w-16 rounded-2xl font-black text-sm border border-emerald-100">
@@ -95,6 +97,12 @@
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Percentage Weight (%)</label>
                                 <input type="number" name="weight" placeholder="1 - 100" required
                                        class="w-full bg-slate-800/50 border-slate-700 text-white rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-0 transition-all">
+                            </div>
+                            {{-- Penyesuaian: Menambahkan Field Deskripsi pada Quick Add --}}
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Criteria Description</label>
+                                <textarea name="description" rows="3" placeholder="Explain what this criteria assesses..."
+                                          class="w-full bg-slate-800/50 border-slate-700 text-white rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-0 transition-all placeholder:text-slate-600 outline-none resize-none"></textarea>
                             </div>
                             <button type="submit" 
                                     class="w-full bg-[#10b981] hover:bg-[#0da371] text-white py-4 rounded-2xl font-bold shadow-lg shadow-emerald-500/20 transition-all transform active:scale-95 flex items-center justify-center gap-2">

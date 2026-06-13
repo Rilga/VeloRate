@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="p-4 lg:p-8">
-        <div class="max-w-3xl mx-auto">
+    <div class="p-4 lg:p-8 flex items-center justify-center min-h-[80vh]">
+        <div class="max-w-3xl w-full">
             <a href="{{ route('evaluations.index', ['period' => $chosenPeriod]) }}" class="inline-flex items-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 hover:text-[#10b981] transition-colors">
                 <i class="fas fa-arrow-left mr-2"></i> Back to List
             </a>
@@ -42,16 +42,23 @@
                             @endphp
                             
                             <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 group hover:border-emerald-200 transition-all">
-                                <div class="flex justify-between items-center mb-4">
-                                    <label class="font-bold text-slate-800">{{ $c->name }}</label>
-                                    <span class="text-[10px] font-black bg-white border border-slate-100 px-3 py-1 rounded-full text-slate-400 uppercase">
-                                        Bobot {{ $c->weight }}%
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="space-y-0.5 text-left">
+                                        {{-- Nama Kriteria Penilaian --}}
+                                        <label class="font-bold text-slate-800 block">{{ $c->name }}</label>
+                                        {{-- Penyesuaian: Menampilkan deskripsi panduan kriteria --}}
+                                        <p class="text-xs text-slate-400 font-medium leading-relaxed max-w-xl">
+                                            {{ $c->description ?? 'No specific guidelines provided for this metric.' }}
+                                        </p>
+                                    </div>
+                                    <span class="text-[10px] font-black bg-white border border-slate-100 px-3 py-1 rounded-full text-slate-400 uppercase shrink-0">
+                                        Weight {{ $c->weight }}%
                                     </span>
                                 </div>
                                 <input type="number" name="scores[{{ $c->id }}]" min="0" max="100" 
                                        value="{{ old('scores.'.$c->id, $oldScore > 0 ? $oldScore : '') }}" 
                                        placeholder="Masukkan Nilai (0 - 100)" required
-                                       class="w-full bg-white border-slate-200 rounded-xl px-5 py-3.5 focus:border-[#10b981] group-hover:shadow-md transition-all font-semibold">
+                                       class="w-full bg-white border-slate-200 rounded-xl px-5 py-3.5 focus:border-[#10b981] group-hover:shadow-md transition-all font-semibold mt-3">
                             </div>
                         @endforeach
                     </div>
@@ -59,7 +66,7 @@
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Manager Notes</label>
                         <textarea name="notes" rows="4" placeholder="Add any qualitative observations..." 
-                                  class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981]">{{ old('notes', $existingEvaluation->notes ?? '') }}</textarea>
+                                  class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] outline-none">{{ old('notes', $existingEvaluation->notes ?? '') }}</textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-[#10b981] hover:bg-[#0da371] text-white py-5 rounded-2xl font-bold shadow-xl shadow-emerald-500/20 transition-all transform active:scale-95 text-center">

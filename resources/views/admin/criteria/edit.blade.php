@@ -18,11 +18,16 @@
                     @csrf @method('PUT')
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Change Name</label>
-                        <input type="text" name="name" value="{{ $criterion->name }}" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                        <input type="text" name="name" value="{{ $criterion->name }}" required class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Change Weight (%)</label>
-                        <input type="number" name="weight" value="{{ $criterion->weight }}" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                        <input type="number" name="weight" value="{{ $criterion->weight }}" required class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                    </div>
+                    {{-- Penyesuaian: Menambahkan Field Deskripsi --}}
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Change Description</label>
+                        <textarea name="description" rows="3" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all outline-none resize-none" placeholder="Adjust criterion description...">{{ old('description', $criterion->description) }}</textarea>
                     </div>
                     <button type="submit" class="w-full bg-[#1e293b] hover:bg-[#10b981] text-white py-4 rounded-2xl font-bold shadow-xl shadow-slate-900/10 transition-all">
                         Save Changes

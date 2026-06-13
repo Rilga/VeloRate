@@ -23,9 +23,11 @@ class CriteriaController extends Controller
      */
     public function store(Request $request)
     {
+        // Menambahkan 'description' ke dalam aturan validasi
         $request->validate([
             'name' => 'required|string|max:255',
             'weight' => 'required|numeric|min:1|max:100',
+            'description' => 'nullable|string', 
         ]);
 
         $currentTotal = AssessmentCriteria::sum('weight');
@@ -37,6 +39,7 @@ class CriteriaController extends Controller
                 ->with('error', "Gagal! Sisa kuota bobot hanya {$availableQuota}%. Anda mencoba memasukkan {$request->weight}%.");
         }
 
+        // Otomatis menyimpan description karena menggunakan $request->all()
         AssessmentCriteria::create($request->all());
 
         return redirect()->route('criteria.index')
@@ -56,9 +59,11 @@ class CriteriaController extends Controller
      */
     public function update(Request $request, AssessmentCriteria $criterion)
     {
+        // Menambahkan 'description' ke dalam aturan validasi
         $request->validate([
             'name' => 'required|string|max:255',
             'weight' => 'required|numeric|min:1|max:100',
+            'description' => 'nullable|string',
         ]);
 
         // Hitung total bobot kriteria LAIN (selain yang sedang diedit)
@@ -71,6 +76,7 @@ class CriteriaController extends Controller
                 ->with('error', "Gagal! Maksimal bobot yang diperbolehkan untuk kriteria ini adalah {$maxAllowed}%.");
         }
 
+        // Otomatis memperbarui description karena menggunakan $request->all()
         $criterion->update($request->all());
 
         return redirect()->route('criteria.index')

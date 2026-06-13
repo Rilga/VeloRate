@@ -13,11 +13,16 @@
                     @csrf
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Nama</label>
-                        <input type="text" name="name" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                        <input type="text" name="name" value="{{ old('name') }}" required class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Bobot (%)</label>
-                        <input type="number" name="weight" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                        <input type="number" name="weight" value="{{ old('weight') }}" required class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all">
+                    </div>
+                    {{-- Penyesuaian: Menambahkan Field Deskripsi --}}
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Deskripsi</label>
+                        <textarea name="description" rows="3" class="w-full bg-slate-50 border-slate-200 rounded-2xl px-5 py-4 focus:border-[#10b981] focus:ring-emerald-500/5 transition-all outline-none resize-none" placeholder="Jelaskan parameter penilaian kriteria ini...">{{ old('description') }}</textarea>
                     </div>
                     <button type="submit" class="w-full bg-[#10b981] hover:bg-[#0da371] text-white py-4 rounded-2xl font-bold shadow-xl shadow-emerald-500/20 transition-all">
                         Simpan Kriteria

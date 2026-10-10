@@ -143,7 +143,7 @@
                 <img
                     src="{{ asset('images/logo.png') }}"
                     alt="AIA"
-                    class="h-9 w-auto object-contain"
+                    class="h-12 w-auto object-contain"
                 >
 
             </a>
@@ -1286,7 +1286,7 @@
                 <img
                     src="{{ asset('images/logo.png') }}"
                     alt="AIA"
-                    class="h-6 w-auto brightness-0 invert"
+                    class="h-6 w-auto"
                 >
 
                 <span

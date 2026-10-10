@@ -141,7 +141,7 @@
             >
 
                 <img
-                    src="{{ asset('images/aia-logo.png') }}"
+                    src="{{ asset('images/logo.png') }}"
                     alt="AIA"
                     class="h-9 w-auto object-contain"
                 >
@@ -1284,7 +1284,7 @@
             >
 
                 <img
-                    src="{{ asset('images/aia-logo.png') }}"
+                    src="{{ asset('images/logo.png') }}"
                     alt="AIA"
                     class="h-6 w-auto brightness-0 invert"
                 >

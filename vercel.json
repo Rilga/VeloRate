@@ -30,9 +30,9 @@
         "SESSION_DRIVER": "cookie",
 
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "vnykhm.h.filess.io",
+        "DB_HOST": "bk3z-y.h.filess.io",
         "DB_PORT": "3307",
-        "DB_DATABASE": "velorate_frozenmeet",
-        "DB_USERNAME": "velorate_frozenmeet"
+        "DB_DATABASE": "AIA_actuallist",
+        "DB_USERNAME": "AIA_actuallist"
     }
 }
